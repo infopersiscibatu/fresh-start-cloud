@@ -17,7 +17,7 @@ describe("Pratinjau tautan publik", () => {
     expect(dariJawaban("galeri/f-1", { foto: [{ id: "f-1", aktif: false }] })).toBeNull();
   });
   it("does not invent images for announcements without photos", () => {
-    expect(dariBawaan("beranda/pengumuman/an-1")?.gambar).toBe("");
+    expect(dariBawaan("beranda/pengumuman/an-1")).toBeNull();
   });
   it("rejects invalid and private destinations", () => {
     expect(tujuanBagikan("admin/akun")).toBeNull();
