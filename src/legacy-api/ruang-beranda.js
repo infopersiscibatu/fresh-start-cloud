@@ -111,6 +111,14 @@ const __ekspor = function pasangRuteBeranda(app, { tanya }) {
          from statistik order by urutan, id`,
     )).rows;
     const hitungan = await hitungStatistik();
+    // Bila tabel statistik masih kosong, tampilkan kartu bawaan yang angkanya
+    // dihitung langsung dari database (jenjang, siswa, mahasiswa).
+    const statistikDasar = [
+      { id: "otomatis-jenjang", urutan: 1, ikon: "graduation-cap", label: "Jenjang Pendidikan", label_pendek: "Jenjang", nilai: "0", satuan: null, catatan: null, tone: "green", aktif: true, sumber: "jenjang" },
+      { id: "otomatis-siswa", urutan: 2, ikon: "users", label: "Siswa Aktif", label_pendek: "Siswa", nilai: "0", satuan: null, catatan: null, tone: "gold", aktif: true, sumber: "siswa" },
+      { id: "otomatis-mahasiswa", urutan: 3, ikon: "book-open", label: "Mahasiswa Aktif", label_pendek: "Mahasiswa", nilai: "0", satuan: null, catatan: null, tone: "green", aktif: true, sumber: "mahasiswa" },
+    ];
+    const daftarStatistik = statistik.length > 0 ? statistik : statistikDasar;
     const navMentah = await bacaPengaturan("navigasi_bawah", NAV_BAWAAN);
     const navigasi = Array.isArray(navMentah) && navMentah.length > 0 ? navMentah : NAV_BAWAAN;
 
