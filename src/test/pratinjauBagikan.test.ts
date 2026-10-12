@@ -3,10 +3,8 @@ import { tujuanBagikan } from "@/app/lib/tautanBagikan";
 import { dariBawaan, dariJawaban, gambarPratinjau } from "@/lib/pratinjauBagikan";
 
 describe("Pratinjau tautan publik", () => {
-  it("uses the article's actual image and destination", () => {
-    const data = dariBawaan("artikel/adab-menuntut-ilmu-sebelum-pelajaran");
-    expect(data?.gambar).toContain("photo-1629273229214-d96be4552b9a");
-    expect(data?.hash).toBe("/#/artikel/adab-menuntut-ilmu-sebelum-pelajaran");
+  it("returns null for built-in content because sample data is emptied", () => {
+    expect(dariBawaan("artikel/adab-menuntut-ilmu-sebelum-pelajaran")).toBeNull();
   });
   it("uses the published content's uploaded image", () => {
     expect(dariJawaban("berita/kegiatan", { berita: [{ slug: "kegiatan", judul: "Kegiatan", gambarUrl: "/berkas/kegiatan.jpg", terbit: true }] })?.gambar).toBe("/berkas/kegiatan.jpg");
