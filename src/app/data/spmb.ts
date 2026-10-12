@@ -16,7 +16,7 @@ const geser = (hari: number) => tanggalBulanSingkat(hariKe(hari));
 
 export const gelombang: Gelombang[] = [];
 
-export const biaya = [];
+export const biaya: any[] = [];
 
 /** Nomor WhatsApp admin panitia SPMB. */
 export const waAdmin = "088224597479";
