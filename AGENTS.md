@@ -10,7 +10,7 @@
 <!-- LOVABLE:END -->
 
 - The original PERSIS Cibatu app lives in `src/app/` and is rendered client-only from `src/routes/index.tsx` (it uses hash navigation); keeps the imported code intact while migrating.
-- `legacy-server/` is the untouched original server for reference; the running copy is `src/legacy-api/` (auto-converted to ESM) served by `src/routes/api/$.ts` through a tiny Express shim, so original route code stays unchanged.
+- `src/legacy-api/` is the server code (auto-converted to ESM) (auto-converted to ESM) served by `src/routes/api/$.ts` through a tiny Express shim, so original route code stays unchanged.
 - Legacy SQL runs via service-role RPC `public.jalankan_sql` with client-side literal parameter substitution; all public tables are RLS-locked with no anon/authenticated grants because only the server touches them.
 - Web Push is implemented with WebCrypto in `src/legacy-api/lib/webpush-shim.js` (drop-in for the Node-only web-push library).
 - Foreground push banners receive same-origin service-worker messages in one app-level BannerPush; native notifications remain enabled because background presentation belongs to the OS.
