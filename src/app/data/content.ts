@@ -40,11 +40,11 @@ export const gambar = {
 /* Beranda                                                             */
 /* ------------------------------------------------------------------ */
 
-export const slide = [];
+export const slide: any[] = [];
 
-export const statistik = [];
+export const statistik: any[] = [];
 
-export const menu = [];
+export const menu: any[] = [];
 
 export const profil = {
   image: gambar.masjidJabar,
@@ -64,7 +64,8 @@ export const profil = {
   ],
 };
 
-export const pengurus = [];
+export type Pengurus = { id: string; urutan?: number; nama: string; jabatan: string; bidang?: string | null; periode?: string | null; foto?: string | null; aktif?: boolean };
+export const pengurus: Pengurus[] = [];
 
 /* ------------------------------------------------------------------ */
 /* Inisial nama                                                        */
@@ -211,7 +212,7 @@ export const artikel: Artikel[] = [];
 /* Kontak                                                             */
 /* ------------------------------------------------------------------ */
 
-export const topikKontak = [];
+export const topikKontak: string[] = [];
 
 export type KontakUnit = {
   id: string;
