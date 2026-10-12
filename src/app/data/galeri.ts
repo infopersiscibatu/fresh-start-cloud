@@ -2,15 +2,7 @@ import { hariKe, tanggalBulanSingkat } from "../lib/format";
 
 /* Album dan foto galeri — sama seperti situs rujukan. */
 
-export const albumGaleri = [
-  "Semua",
-  "Kegiatan Belajar",
-  "Kajian & Dakwah",
-  "Tahfizhul Qur'an",
-  "Ekstrakurikuler",
-  "Wisuda & Kelulusan",
-  "Fasilitas & Kampus",
-];
+export const albumGaleri = [];
 
 type FotoMentah = { id: string; judul: string; album: string; hari: number; gambar: string };
 

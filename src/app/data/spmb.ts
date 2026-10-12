@@ -14,30 +14,9 @@ export type Gelombang = { id: string; nama: string; periode: string; kuota: stri
 
 const geser = (hari: number) => tanggalBulanSingkat(hariKe(hari));
 
-export const gelombang: Gelombang[] = [
-  {
-    id: "gl-1",
-    nama: "Gelombang I",
-    periode: `${geser(-6)} – ${geser(24)}`,
-    kuota: "120 kursi",
-    sisa: "38 kursi tersisa",
-    status: "Dibuka",
-  },
-  {
-    id: "gl-2",
-    nama: "Gelombang II",
-    periode: `${geser(31)} – ${geser(61)}`,
-    kuota: "80 kursi",
-    sisa: "Belum dibuka",
-    status: "Segera",
-  },
-];
+export const gelombang: Gelombang[] = [];
 
-export const biaya = [
-  { id: "bi-1", label: "Formulir pendaftaran", nilai: "Rp 100.000" },
-  { id: "bi-2", label: "Tes seleksi & wawancara", nilai: "Gratis" },
-  { id: "bi-3", label: "Administrasi daftar ulang", nilai: "Sesuai jenjang" },
-];
+export const biaya = [];
 
 /** Nomor WhatsApp admin panitia SPMB. */
 export const waAdmin = "088224597479";
