@@ -340,7 +340,7 @@ function gabungUnit(u: NonNullable<Jawaban["unit"]>[number]): UnitTampil {
 }
 
 function gabungJurusan(p: NonNullable<Jawaban["jurusan"]>[number]): JurusanTampil {
-  const dasar = dariStatisJurusan().find((b) => b.slug === p.slug) ?? dariStatisJurusan()[0];
+  const dasar = dariStatisJurusan().find((b) => b.slug === p.slug) ?? dariStatisJurusan()[0] ?? JURUSAN_KOSONG;
   return {
     id: p.id,
     slug: p.slug,
