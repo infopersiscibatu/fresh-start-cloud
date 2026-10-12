@@ -310,7 +310,7 @@ const UNIT_KOSONG: UnitTampil = {
   id: "",
   slug: "",
   jenjangSlug: "",
-  nomor: null,
+  nomor: "",
   nama: "",
   daerah: "",
   alamat: "",
