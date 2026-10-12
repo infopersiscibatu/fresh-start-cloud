@@ -22,19 +22,9 @@ async function bacaTanda(tanya, kunci) {
 async function siapkanSkema() {}
 
 async function isiBenih(tanya) {
-  const { isiSemua, VERSI_BENIH } = benihModul;
-  const tanda = await bacaTanda(tanya, "benih");
-  if (tanda && tanda.versi === VERSI_BENIH) return { diisi: false, versi: tanda.versi };
-  const versiSaatIni = tanda && tanda.versi ? String(tanda.versi) : null;
-  const hanyaVersi = versiSaatIni ? VERSI_BENIH : undefined;
-  const laporan = await isiSemua({
-    tanya,
-    data: dataBenih,
-    hanyaVersi,
-    idBaru: (awalan) => `${awalan}-${Math.random().toString(36).slice(2, 8)}`,
-  });
-  await tandai(tanya, "benih", { versi: VERSI_BENIH, sebelumnya: versiSaatIni, diisi: new Date().toISOString() });
-  return { diisi: true, versi: VERSI_BENIH, baru: hanyaVersi ?? null, laporan };
+  // Data contoh dinonaktifkan atas permintaan pemilik: database dibiarkan kosong
+  // dan seluruh isi situs diisi sendiri lewat halaman admin.
+  return { diisi: false, versi: null };
 }
 
 async function siapkanDatabase(tanya) {
