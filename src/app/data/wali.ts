@@ -11,28 +11,11 @@ export const santri = {
 
 export type Pelajaran = { id: string; mapel: string; nilai: number; predikat: string };
 
-export const nilaiWali: Pelajaran[] = [
-  { id: "nl-1", mapel: "Al-Qur'an & Tahfizh", nilai: 92, predikat: "A" },
-  { id: "nl-2", mapel: "Fikih", nilai: 88, predikat: "B+" },
-  { id: "nl-3", mapel: "Bahasa Arab", nilai: 85, predikat: "B+" },
-  { id: "nl-4", mapel: "Matematika", nilai: 79, predikat: "B" },
-  { id: "nl-5", mapel: "Bahasa Indonesia", nilai: 86, predikat: "B+" },
-  { id: "nl-6", mapel: "Bahasa Inggris", nilai: 82, predikat: "B+" },
-  { id: "nl-7", mapel: "IPA Terpadu", nilai: 80, predikat: "B" },
-  { id: "nl-8", mapel: "PPKn", nilai: 84, predikat: "B+" },
-];
+export const nilaiWali: Pelajaran[] = [];
 
 export type Setoran = { id: string; tanggal: string; materi: string; jenis: string; penilai: string; nilai: string };
 
-export const setoranTahfidz: Setoran[] = [
-  { id: "st-1", tanggal: "2026-09-28", materi: "Juz 1 · Al-Baqarah 1 – 20", jenis: "Setoran Baru", penilai: "Ust. Hilman Nurhakim", nilai: "Mumtaz" },
-  { id: "st-2", tanggal: "2026-09-25", materi: "Juz 30 · An-Naba 1 – 40", jenis: "Murojaah", penilai: "Ust. Hilman Nurhakim", nilai: "Jayyid Jiddan" },
-  { id: "st-3", tanggal: "2026-09-21", materi: "Juz 1 · Al-Fatihah & awal Al-Baqarah", jenis: "Setoran Baru", penilai: "Ust. Fauzan Ramdhani", nilai: "Jayyid Jiddan" },
-  { id: "st-4", tanggal: "2026-09-18", materi: "Juz 30 · An-Nazi'at 1 – 46", jenis: "Murojaah", penilai: "Ust. Hilman Nurhakim", nilai: "Jayyid" },
-  { id: "st-5", tanggal: "2026-09-14", materi: "Juz 30 · 'Abasa 1 – 42", jenis: "Murojaah", penilai: "Ust. Fauzan Ramdhani", nilai: "Jayyid Jiddan" },
-  { id: "st-6", tanggal: "2026-09-11", materi: "Juz 1 · Al-Baqarah 21 – 39", jenis: "Setoran Baru", penilai: "Ust. Hilman Nurhakim", nilai: "Jayyid" },
-  { id: "st-7", tanggal: "2026-09-07", materi: "Juz 30 · At-Takwir 1 – 29", jenis: "Murojaah", penilai: "Ust. Fauzan Ramdhani", nilai: "Perlu Diulang" },
-];
+export const setoranTahfidz: Setoran[] = [];
 
 export const tahfidz = {
   capaian: "6 Juz 14 Lembar",
@@ -46,38 +29,7 @@ export const tahfidz = {
 export type MetodeBayarWali = { id: string; nama: string; keterangan: string; detail: string[] };
 
 /** Cara pembayaran tagihan wali santri (halaman "Sudah Bayar"). */
-export const metodeBayarWali: MetodeBayarWali[] = [
-  {
-    id: "mb-1",
-    nama: "Transfer Bank",
-    keterangan: "Rekening resmi lembaga",
-    detail: [
-      "Transfer ke rekening Bank BRI 0123-4567-8901-234 atas nama PC PERSIS Cibatu.",
-      "Cantumkan nama santri dan NIS pada berita transfer, contoh: SPP - Muhammad Rizky - 2024.0187.",
-      "Simpan bukti transfer, lalu tekan tombol Sudah Bayar pada halaman ini agar tagihan masuk ke pemeriksaan bendahara.",
-    ],
-  },
-  {
-    id: "mb-2",
-    nama: "QRIS",
-    keterangan: "Pindai kode di sekretariat",
-    detail: [
-      "Kode QRIS resmi lembaga tersedia di sekretariat dan ruang bendahara. Silakan pindai menggunakan aplikasi pembayaran apa pun.",
-      "Pastikan nama penerima yang muncul adalah PC PERSIS Cibatu sebelum menyelesaikan pembayaran.",
-      "Setelah pembayaran berhasil, tekan tombol Sudah Bayar dan tunjukkan bukti pembayaran kepada petugas.",
-    ],
-  },
-  {
-    id: "mb-3",
-    nama: "Tunai di Bendahara",
-    keterangan: "Senin – Jumat, 07.30 – 15.30 WIB",
-    detail: [
-      "Pembayaran tunai dilayani langsung di ruang bendahara lembaga pada hari kerja, pukul 07.30 – 15.30 WIB.",
-      "Petugas akan mencatat pembayaran dan memberikan tanda terima sementara kepada wali santri.",
-      "Tekan tombol Sudah Bayar setelah pembayaran dilakukan agar tagihan tercatat menunggu verifikasi.",
-    ],
-  },
-];
+export const metodeBayarWali: MetodeBayarWali[] = [];
 
 /** Rata-rata nilai seluruh mata pelajaran. */
 export const rataRataNilai = () =>
@@ -93,17 +45,7 @@ export type Tagihan = {
 };
 
 /** Tagihan yang belum dibayar (data awal). */
-export const tagihanAwal: Tagihan[] = [
-  {
-    id: "tg-spmb",
-    label: "Daftar ulang (SPMB)",
-    keterangan:
-      "Tagihan otomatis dari verifikasi SPMB — Perguruan Tinggi PERSIS Cibatu — Kampus Putra. Nominal bisa diubah petugas tata usaha.",
-    jumlah: 250000,
-    jatuhTempo: "",
-    status: "Belum dibayar",
-  },
-];
+export const tagihanAwal: Tagihan[] = [];
 
 export type TagihanMenunggu = {
   id: string;
@@ -114,22 +56,12 @@ export type TagihanMenunggu = {
 };
 
 /** Pembayaran yang sudah dicatat dan menunggu pemeriksaan bendahara (data awal). */
-export const menungguAwal: TagihanMenunggu[] = [
-  { id: "mn-spp", label: "SPP Bulan Ini", jumlah: 450000, metode: "Transfer Bank" },
-  { id: "mn-seragam", label: "Seragam & Perlengkapan", jumlah: 385000, metode: "Transfer Bank" },
-];
+export const menungguAwal: TagihanMenunggu[] = [];
 
 export type PembayaranRiwayat = { id: string; label: string; jumlah: number; metode: string; tanggal: string };
 
 /** Riwayat pembayaran yang sudah terverifikasi (data awal). */
-export const riwayatAwal: PembayaranRiwayat[] = [
-  { id: "rw-1", label: "SPP Bulan Lalu", jumlah: 450000, metode: "Transfer Bank", tanggal: "2026-08-11" },
-  { id: "rw-2", label: "Uang Kegiatan Semester", jumlah: 275000, metode: "Tunai di Bendahara", tanggal: "2026-08-04" },
-  { id: "rw-3", label: "Buku Paket & LKS", jumlah: 320000, metode: "Tunai di Bendahara", tanggal: "2026-07-13" },
-  { id: "rw-4", label: "SPP Bulan Juni", jumlah: 450000, metode: "Transfer Bank", tanggal: "2026-06-09" },
-  { id: "rw-5", label: "Infaq Pembangunan", jumlah: 200000, metode: "Transfer Bank", tanggal: "2026-05-18" },
-  { id: "rw-6", label: "SPP Bulan April", jumlah: 450000, metode: "Tunai di Bendahara", tanggal: "2026-04-10" },
-];
+export const riwayatAwal: PembayaranRiwayat[] = [];
 
 /* ---------------------------- paginasi ---------------------------- */
 
