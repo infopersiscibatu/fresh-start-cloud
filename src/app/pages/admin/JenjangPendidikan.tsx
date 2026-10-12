@@ -224,6 +224,7 @@ export function NamaJenjang() {
           short: j.short,
           nama: j.nama,
           tagline: j.tagline,
+          gambar: j.gambar,
           jumlahUnit: j.jumlahUnit,
         })),
       );
@@ -387,7 +388,7 @@ export function NamaJenjang() {
         type="button"
         data-testid="tambah-jenjang"
         onClick={() => {
-          setBaris((s) => [...s, { short: "", nama: "", tagline: "", jumlahUnit: 0 }]);
+          setBaris((s) => [...s, { short: "", nama: "", tagline: "", gambar: "", jumlahUnit: 0 }]);
           setKotor(true);
         }}
         className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-dashed border-persis-900/25 px-4 py-2.5 text-[11px] font-semibold text-persis-900 transition active:scale-[0.98]"
