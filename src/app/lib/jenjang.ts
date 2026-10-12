@@ -305,10 +305,53 @@ function gabung(j: Jawaban | null): JenjangGabungan {
   };
 }
 
+/** Cadangan kosong bila data bawaan sudah dikosongkan — supaya unit dari database tetap tampil. */
+const UNIT_KOSONG: UnitTampil = {
+  id: "",
+  slug: "",
+  jenjangSlug: "",
+  nomor: "",
+  nama: "",
+  daerah: "",
+  alamat: "",
+  pimpinan: "",
+  siswa: 0,
+  rombel: 0,
+  guru: 0,
+  staf: 0,
+  akreditasi: "",
+  status: "Swasta",
+  kontak: "",
+  email: "",
+  npsn: "",
+  berdiri: "",
+  jam: "",
+  gambar: "",
+  gambarKhusus: "",
+  alumni: 0,
+  jurusan: [],
+  ekstra: [],
+  fasilitas: [],
+  aktif: true,
+};
+
+const JURUSAN_KOSONG: JurusanTampil = {
+  id: "",
+  slug: "",
+  jenjangSlug: "",
+  short: "",
+  nama: "",
+  intro: "",
+  fokus: [],
+  ukt: "",
+  gambar: "",
+  aktif: true,
+};
+
 /** Unit: gambar dan angka diambil dari data bawaan bila kolomnya kosong. */
 function gabungUnit(u: NonNullable<Jawaban["unit"]>[number]): UnitTampil {
   const bawaan = dariStatisUnit().find((b) => b.slug === u.slug);
-  const dasar = bawaan ?? dariStatisUnit()[0];
+  const dasar = bawaan ?? dariStatisUnit()[0] ?? UNIT_KOSONG;
   return {
     id: u.id,
     slug: u.slug,
@@ -340,7 +383,7 @@ function gabungUnit(u: NonNullable<Jawaban["unit"]>[number]): UnitTampil {
 }
 
 function gabungJurusan(p: NonNullable<Jawaban["jurusan"]>[number]): JurusanTampil {
-  const dasar = dariStatisJurusan().find((b) => b.slug === p.slug) ?? dariStatisJurusan()[0];
+  const dasar = dariStatisJurusan().find((b) => b.slug === p.slug) ?? dariStatisJurusan()[0] ?? JURUSAN_KOSONG;
   return {
     id: p.id,
     slug: p.slug,
