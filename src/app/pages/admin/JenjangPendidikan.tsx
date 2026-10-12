@@ -204,6 +204,7 @@ type BarisJenjang = {
   short: string;
   nama: string;
   tagline: string;
+  gambar: string;
   jumlahUnit: number;
 };
 

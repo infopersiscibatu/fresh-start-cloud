@@ -372,6 +372,10 @@ const __ekspor = function pasangRuteAdmin(app, { tanya }) {
       nilai.push(rapikan(b.tagline, BATAS_PENDEK));
       setel.push(`tagline = $${nilai.length}`);
     }
+    if ("gambar_url" in b) {
+      nilai.push(rapikan(b.gambar_url, 500));
+      setel.push(`gambar_url = $${nilai.length}`);
+    }
     if (setel.length === 0) return res.status(400).json({ pesan: "Tidak ada perubahan yang dikirim." });
 
     await kirimJenjang(res, async () => {
