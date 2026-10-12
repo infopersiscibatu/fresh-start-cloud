@@ -256,6 +256,58 @@ app.get("/api/db/status", async (_req, res) => {
 const akses = pasangRuteLogin(app, { tanya });
 app.use("/api/admin", akses.penjagaSesi);
 
+/*
+ * Siaran otomatis: setelah admin menambah/menerbitkan konten, kirim notifikasi push
+ * ke semua perangkat. push_terkirim mencegah konten yang sama dikirim dua kali.
+ */
+const SIARAN = {
+  artikel: { tabel: "artikel", jenis: "Artikel", tautan: (r) => `/#/artikel/${r.slug}`, isi: (r) => r.ringkasan },
+  berita: { tabel: "berita", jenis: "Berita", tautan: (r) => `/#/berita/${r.slug}`, isi: (r) => r.ringkasan },
+  pengumuman: { tabel: "pengumuman", jenis: "Pengumuman", tautan: () => "/#/pengumuman", isi: (r) => r.ringkasan },
+  agenda: { tabel: "agenda", jenis: "Agenda", tautan: () => "/#/agenda", isi: (r) => r.tempat },
+  kajian: { tabel: "kajian", jenis: "Kajian", tautan: () => "/#/kajian", isi: (r) => r.ringkasan || r.ustadz },
+};
+async function siarkanTerbaru(c) {
+  const { rows } = await tanya(
+    `select * from ${c.tabel} t where terbit = true
+       and coalesce(t.diperbarui, t.dibuat) > now() - interval '10 minutes'
+       and not exists (select 1 from push_terkirim p where p.id = $1 || t.id)
+     order by coalesce(t.diperbarui, t.dibuat) desc limit 1`,
+    [`${c.tabel}-`],
+  );
+  const r = rows[0];
+  if (!r) return;
+  const id = `${c.tabel}-${r.id}`;
+  await tanya(
+    `insert into push_terkirim (id, jenis, judul) values ($1, $2, $3) on conflict (id) do nothing`,
+    [id, c.jenis, String(r.judul).slice(0, 300)],
+  );
+  await push.kirimKeSemua({
+    jenis: c.jenis,
+    judul: `${c.jenis} baru: ${r.judul}`,
+    isi: c.isi(r) || "Ketuk untuk membaca selengkapnya.",
+    tautan: c.tautan(r),
+    kunci: id,
+  });
+}
+app.use("/api/admin", (req, res, next) => {
+  const m = /^\/api\/admin\/(artikel|berita|pengumuman|agenda|kajian)(\/[^/]+)?\/?$/.exec(req.path || "");
+  const tulis = !m ? false : req.method === "POST" ? !m[2] : req.method === "PUT" ? Boolean(m[2]) && req.body?.terbit !== false : false;
+  if (!tulis) return next();
+  let kode = 200;
+  const asliStatus = res.status.bind(res);
+  res.status = (s) => { kode = s; return asliStatus(s); };
+  const asli = res.json.bind(res);
+  res.json = (data) => {
+    if (kode >= 300) return asli(data);
+    siarkanTerbaru(SIARAN[m[1]])
+      .catch((e) => console.error("Siaran push gagal:", e.message))
+      .finally(() => asli(data));
+    return res;
+  };
+  next();
+});
+
 pasangRuteAdmin(app, { tanya });
 pasangRuteTahunAjaran(app, { tanya });
 pasangRuteSpmb(app, { tanya });
