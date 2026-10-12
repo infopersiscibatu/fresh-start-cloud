@@ -45,7 +45,7 @@ export const istilahMadrasah: Istilah = { unit: "madrasah", unitKumpulan: "Dafta
 
 export const Kampus: Istilah = { unit: "kampus", unitKumpulan: "Daftar Kampus", unitLain: "Kampus Lain", peserta: "Mahasiswa", pengajar: "Dosen & staf", rombel: "Kelas kuliah", kegiatan: "Unit Kegiatan Mahasiswa", jurusan: "Program Studi", materi: "Mata kuliah", statUnit: "Kampus", statPeserta: "Mahasiswa", kode: "Kode PT", identitas: "Identitas Kampus", status: "Perguruan Tinggi – PERSIS", pimpinanUnit: "Rektor", tahunAkademik: "Tahun Akademik", sebutan: "Mahasiswa", sebutanKecil: "mahasiswa", pengajarTunggal: "Dosen", pengajarTunggalKecil: "dosen", wali: "Wali mahasiswa", waliKecil: "wali mahasiswa", iuran: "UKT", nomorInduk: "NIM", penerimaan: "PMB", calon: "Calon mahasiswa", calonKecil: "calon mahasiswa", materiKecil: "mata kuliah", portal: "Portal wali mahasiswa" };
 
-export const jenjang = [] as const;
+export const jenjang: any[] = [];
 
 export const unit: any[] = [];
 
