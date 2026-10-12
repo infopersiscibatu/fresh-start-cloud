@@ -305,6 +305,49 @@ function gabung(j: Jawaban | null): JenjangGabungan {
   };
 }
 
+/** Cadangan kosong bila data bawaan sudah dikosongkan — supaya unit dari database tetap tampil. */
+const UNIT_KOSONG: UnitTampil = {
+  id: "",
+  slug: "",
+  jenjangSlug: "",
+  nomor: null,
+  nama: "",
+  daerah: "",
+  alamat: "",
+  pimpinan: "",
+  siswa: 0,
+  rombel: 0,
+  guru: 0,
+  staf: 0,
+  akreditasi: "",
+  status: "Swasta",
+  kontak: "",
+  email: "",
+  npsn: "",
+  berdiri: "",
+  jam: "",
+  gambar: "",
+  gambarKhusus: "",
+  alumni: 0,
+  jurusan: [],
+  ekstra: [],
+  fasilitas: [],
+  aktif: true,
+};
+
+const JURUSAN_KOSONG: JurusanTampil = {
+  id: "",
+  slug: "",
+  jenjangSlug: "",
+  short: "",
+  nama: "",
+  intro: "",
+  fokus: [],
+  ukt: "",
+  gambar: "",
+  aktif: true,
+};
+
 /** Unit: gambar dan angka diambil dari data bawaan bila kolomnya kosong. */
 function gabungUnit(u: NonNullable<Jawaban["unit"]>[number]): UnitTampil {
   const bawaan = dariStatisUnit().find((b) => b.slug === u.slug);
