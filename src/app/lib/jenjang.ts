@@ -308,7 +308,7 @@ function gabung(j: Jawaban | null): JenjangGabungan {
 /** Unit: gambar dan angka diambil dari data bawaan bila kolomnya kosong. */
 function gabungUnit(u: NonNullable<Jawaban["unit"]>[number]): UnitTampil {
   const bawaan = dariStatisUnit().find((b) => b.slug === u.slug);
-  const dasar = bawaan ?? dariStatisUnit()[0];
+  const dasar = bawaan ?? dariStatisUnit()[0] ?? UNIT_KOSONG;
   return {
     id: u.id,
     slug: u.slug,
