@@ -16,7 +16,6 @@ const nada: Record<string, string> = {
 type Jenjang = JenjangTampil;
 
 /** Angka ringkas statistik pada halaman jenjang (mengikuti nilai bawaan rujukan). */
-const JUMLAH_SISWA = "1.248";
 
 /* ---------------------------------- Kartu jenjang ---------------------------------- */
 
@@ -70,7 +69,7 @@ export function HalamanJenjang({ onBuka }: { onBuka: (slug: string) => void }) {
             {halaman.judul || "Jenjang Pendidikan"}
           </h1>
           <p className="mt-1.5 text-[10px] font-semibold tracking-[0.16em] text-white/70 uppercase">
-            {formal.length} Jenjang · {JUMLAH_SISWA} Siswa &amp; Santri
+            {formal.length} Jenjang · {formal.reduce((n, j) => n + (j.jumlahPeserta ?? 0), 0).toLocaleString("id-ID")} Siswa &amp; Santri
           </p>
         </div>
       </section>

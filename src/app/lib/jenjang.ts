@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { gambar as fotoUmum } from "../data/content";
 import {
   halamanJenjang as halamanStatis,
   jenjang as jenjangStatis,
@@ -278,7 +279,7 @@ function gabung(j: Jawaban | null): JenjangGabungan {
             satuan: teks(d.satuan, dasar.satuan),
             lokasi: teks(d.lokasi, dasar.lokasi),
             tone: teks(d.tone, dasar.tone),
-            gambar: teks(d.gambarUrl, dasar.gambar),
+            gambar: teks(d.gambarUrl, dasar.gambar) || fotoUmum.kelas2,
             /* Penyebutan dari server (menyesuaikan jenjang), cadangan dari data bawaan. */
             istilah: d.istilah ?? dasar.istilah,
             hitungJenjang: d.hitungJenjang !== false,
@@ -403,7 +404,7 @@ function fotoBawaanUnit(slug: string, jenjangSlug: string | null | undefined, ca
   const unitBawaan = dariStatisUnit().find((u) => u.slug === slug);
   if (unitBawaan?.gambar) return unitBawaan.gambar;
   const jenjang = dariStatis().find((j) => j.slug === (jenjangSlug ?? ""));
-  return jenjang?.gambar || cadangan;
+  return jenjang?.gambar || cadangan || fotoUmum.kelas1;
 }
 
 /** Gambar bawaan sebuah jenjang (dipakai borang admin saat sekolah belum punya foto). */
