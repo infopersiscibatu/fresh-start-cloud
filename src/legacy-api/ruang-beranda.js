@@ -124,7 +124,7 @@ const __ekspor = function pasangRuteBeranda(app, { tanya }) {
 
     return {
       halaman: HALAMAN,
-      statistik: statistik.map((k) => {
+      statistik: daftarStatistik.map((k) => {
         const sumber = k.sumber && k.sumber in hitungan ? k.sumber : null;
         const live = sumber ? hitungan[sumber] : null;
         return {
